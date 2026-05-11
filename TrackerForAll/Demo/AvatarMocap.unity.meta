@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 3ab05183baa584a11a7c3e67dc20242d
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/Demo/AvatarMocap.unity
+  uploadId: 830720

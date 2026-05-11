@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c05f1eaf605454b4fa7fac5cd7519cc0
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/Prefabs/TrackerPro.prefab
+  uploadId: 830720

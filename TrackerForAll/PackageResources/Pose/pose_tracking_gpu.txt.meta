@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 10dae5ee3ffc04a0aa2d893750f4a5e9
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/PackageResources/Pose/pose_tracking_gpu.txt
+  uploadId: 830720

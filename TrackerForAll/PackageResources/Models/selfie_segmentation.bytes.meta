@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a180364bd295144cfa020cada31fbbcc
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/PackageResources/Models/selfie_segmentation.bytes
+  uploadId: 830720

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: cd50999c161e69345953a2cb517dd339
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/Prefabs/Point Annotation.prefab
+  uploadId: 830720

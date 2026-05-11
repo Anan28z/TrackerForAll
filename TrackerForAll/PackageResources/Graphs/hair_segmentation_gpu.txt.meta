@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e6797b0a13853e9bc932f11e7fcc9036
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/PackageResources/Graphs/hair_segmentation_gpu.txt
+  uploadId: 830720

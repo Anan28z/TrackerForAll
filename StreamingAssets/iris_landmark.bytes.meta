@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 50f48c8239b953746b33e955e4925f36
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/StreamingAssets/iris_landmark.bytes
+  uploadId: 830720

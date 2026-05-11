@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f8cf723791eb14778b9fddd91b8a3e6e
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/PackageResources/Graphs/face_mesh_opengles.txt
+  uploadId: 830720

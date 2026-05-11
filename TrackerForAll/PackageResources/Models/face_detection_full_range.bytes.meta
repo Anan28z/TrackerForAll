@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4ad9556b26e6d44aeb49f805ce0eae60
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/PackageResources/Models/face_detection_full_range.bytes
+  uploadId: 830720

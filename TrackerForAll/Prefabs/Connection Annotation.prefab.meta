@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ce6db8ad8200781fc9201c21237ce23b
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/Prefabs/Connection Annotation.prefab
+  uploadId: 830720

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2dc2a9b6d54774830aca6d6e6e6276da
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/PackageResources/Models/ssdlite_object_detection_labelmap.txt
+  uploadId: 830720

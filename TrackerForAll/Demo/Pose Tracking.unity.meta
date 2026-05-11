@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a4964d5b8866fb3d8bd4c715728200c8
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/Demo/Pose Tracking.unity
+  uploadId: 830720

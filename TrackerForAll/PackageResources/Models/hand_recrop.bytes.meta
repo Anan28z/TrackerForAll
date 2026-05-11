@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ce6b279b4d7ef4633a11dc2c8ded9ad1
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/PackageResources/Models/hand_recrop.bytes
+  uploadId: 830720

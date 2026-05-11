@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a6349d59eefb34f41b6326cb09c171d9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/Graphics/URP-HighFidelity-Renderer.asset
+  uploadId: 830720

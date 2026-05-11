@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0ea6416eaf3d1674291ec58a548378d8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/3D/Materials/SolidConvergence.mat
+  uploadId: 830720

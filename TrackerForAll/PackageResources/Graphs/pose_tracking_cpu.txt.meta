@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d4236f292d49c47458d05d9269bb8f45
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/PackageResources/Graphs/pose_tracking_cpu.txt
+  uploadId: 830720

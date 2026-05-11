@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9793acc3582774a729ec7dfcba9c9bab
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/3D/Character/character.prefab
+  uploadId: 830720

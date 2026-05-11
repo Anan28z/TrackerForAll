@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: bb34619bd449447ee884887111713d52
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/Demo/Hand Landmark Points.unity
+  uploadId: 830720

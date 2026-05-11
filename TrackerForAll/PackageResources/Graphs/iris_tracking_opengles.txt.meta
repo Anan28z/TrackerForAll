@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 43dd63fad6219b1a2bbeddb7874f3137
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/PackageResources/Graphs/iris_tracking_opengles.txt
+  uploadId: 830720

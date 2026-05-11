@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c217293eaa4a34e52bd45a794b1b5960
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/PackageResources/Models/hand_landmark_full.bytes
+  uploadId: 830720

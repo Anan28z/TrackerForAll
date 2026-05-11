@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 16074ce928b0558829296ab0d9ccadf3
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/Prefabs/FaceLandmarkList Annotation.prefab
+  uploadId: 830720

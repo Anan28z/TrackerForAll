@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5da80a5efc5910a21b9460daafddfb45
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/PackageResources/Textures/Radar.renderTexture
+  uploadId: 830720

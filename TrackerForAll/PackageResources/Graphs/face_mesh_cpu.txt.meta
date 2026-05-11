@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ac9f913dc38454abfa9aefc3617be456
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/PackageResources/Graphs/face_mesh_cpu.txt
+  uploadId: 830720

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: feca5c44e1f284e3a8eb9f92a9a1032e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/Scripts/AvatarMocap.cs
+  uploadId: 830720

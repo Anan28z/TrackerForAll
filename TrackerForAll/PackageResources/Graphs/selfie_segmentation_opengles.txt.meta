@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 3c861bf929c058e68a5759b703d993d0
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/PackageResources/Graphs/selfie_segmentation_opengles.txt
+  uploadId: 830720

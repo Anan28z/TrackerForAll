@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5e041aa4c06444c79a4d2246fa6e5d80
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/Third-Party Notices.txt
+  uploadId: 830720

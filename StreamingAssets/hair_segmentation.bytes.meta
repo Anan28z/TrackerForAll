@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f057ac8b73dcd7a41bbb62e1019dabe8
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/StreamingAssets/hair_segmentation.bytes
+  uploadId: 830720

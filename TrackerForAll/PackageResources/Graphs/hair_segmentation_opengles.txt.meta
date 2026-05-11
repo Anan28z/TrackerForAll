@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f1b291f7d16d89cd19d0384c2cf00c9e
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 332418
+  packageName: TrackerForAll
+  packageVersion: 1.2.1
+  assetPath: Assets/TrackerForAll/PackageResources/Graphs/hair_segmentation_opengles.txt
+  uploadId: 830720
