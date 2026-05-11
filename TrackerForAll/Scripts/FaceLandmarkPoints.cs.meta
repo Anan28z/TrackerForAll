@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: 670284d4e1c134f79a87faa4e93b70ea
-AssetOrigin:
-  serializedVersion: 1
-  productId: 332418
-  packageName: TrackerForAll
-  packageVersion: 1.2.1
-  assetPath: Assets/TrackerForAll/Scripts/FaceLandmarkPoints.cs
-  uploadId: 830720
