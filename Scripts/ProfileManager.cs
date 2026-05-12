@@ -4,6 +4,7 @@ using Firebase.Auth;
 using Firebase.Firestore;
 using Firebase.Extensions;
 using System.Collections.Generic;
+using System.Linq;
 
 public class ProfileManager : MonoBehaviour
 {
@@ -28,10 +29,19 @@ public class ProfileManager : MonoBehaviour
     public TextMeshProUGUI balanceAvgText;
     public TextMeshProUGUI balanceBestText;
 
+    [Header("Add Doctor UI")]
+    public TMP_Dropdown doctorDropdown;
+    public TextMeshProUGUI addDoctorStatusText;
+
+    // Maps display name → doctor UID for the dropdown
+    private Dictionary<string, string> availableDoctors = new Dictionary<string, string>();
+    private List<string> doctorNames = new List<string>();
+
     // This runs automatically every time the panel is opened
-    void OnEnable() 
+    void OnEnable()
     {
         FetchAndCalculateProfileData();
+        FetchAvailableDoctors();
     }
 
     public void FetchAndCalculateProfileData()
@@ -143,6 +153,105 @@ public class ProfileManager : MonoBehaviour
             if (balanceBestText != null) balanceBestText.text = Mathf.RoundToInt(bestBalanceTime).ToString() + "s";
         });
     }
+
+    // ===================== DOCTOR SELECTION =====================
+
+    private void FetchAvailableDoctors()
+    {
+        if (doctorDropdown == null) return;
+
+        FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+        db.Collection("Users").GetSnapshotAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.LogError("ProfileManager: Failed to fetch doctors — " + task.Exception);
+                return;
+            }
+
+            availableDoctors.Clear();
+            foreach (DocumentSnapshot doc in task.Result.Documents)
+            {
+                if (!doc.ContainsField("role")) continue;
+                if (doc.GetValue<string>("role") != "Doctor") continue;
+
+                string dName = doc.ContainsField("username") ? doc.GetValue<string>("username") : "Unknown Doctor";
+                availableDoctors[dName] = doc.Id;
+            }
+
+            doctorNames = new List<string>(availableDoctors.Keys);
+            doctorDropdown.ClearOptions();
+            if (doctorNames.Count == 0)
+            {
+                doctorDropdown.AddOptions(new List<string> { "No doctors available" });
+            }
+            else
+            {
+                doctorDropdown.AddOptions(doctorNames);
+            }
+
+            // Show current requested doctor if one is already set
+            var currentUser = FirebaseAuth.DefaultInstance.CurrentUser;
+            if (currentUser == null) return;
+
+            db.Collection("Users").Document(currentUser.UserId).GetSnapshotAsync().ContinueWithOnMainThread(userTask =>
+            {
+                if (userTask.IsFaulted || !userTask.Result.Exists) return;
+
+                string requestedId = userTask.Result.ContainsField("requestedDoctorId")
+                    ? userTask.Result.GetValue<string>("requestedDoctorId") : "";
+
+                if (!string.IsNullOrEmpty(requestedId))
+                {
+                    string requestedName = availableDoctors.FirstOrDefault(kv => kv.Value == requestedId).Key;
+                    if (requestedName != null)
+                    {
+                        int idx = doctorNames.IndexOf(requestedName);
+                        if (idx >= 0) doctorDropdown.value = idx;
+                        if (addDoctorStatusText != null)
+                            addDoctorStatusText.text = $"Requested: {requestedName}";
+                    }
+                }
+            });
+        });
+    }
+
+    public void OnAddDoctorClicked()
+    {
+        if (doctorDropdown == null || doctorNames.Count == 0) return;
+        if (doctorDropdown.options.Count == 0) return;
+        if (doctorDropdown.options[0].text == "No doctors available") return;
+
+        int idx = Mathf.Clamp(doctorDropdown.value, 0, doctorNames.Count - 1);
+        string selectedName = doctorNames[idx];
+        if (!availableDoctors.ContainsKey(selectedName)) return;
+
+        string selectedDoctorId = availableDoctors[selectedName];
+
+        var currentUser = FirebaseAuth.DefaultInstance.CurrentUser;
+        if (currentUser == null) return;
+
+        FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+        db.Collection("Users").Document(currentUser.UserId)
+            .UpdateAsync("requestedDoctorId", selectedDoctorId)
+            .ContinueWithOnMainThread(task =>
+            {
+                if (task.IsCompleted && !task.IsFaulted)
+                {
+                    Debug.Log($"ProfileManager: Requested doctor '{selectedName}'.");
+                    if (addDoctorStatusText != null)
+                        addDoctorStatusText.text = $"Requested: {selectedName}";
+                }
+                else
+                {
+                    Debug.LogError("ProfileManager: Failed to request doctor — " + task.Exception);
+                    if (addDoctorStatusText != null)
+                        addDoctorStatusText.text = "Error. Try again.";
+                }
+            });
+    }
+
+    // ===================== RESET UI =====================
 
     private void ResetUI()
     {
