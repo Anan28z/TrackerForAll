@@ -99,11 +99,13 @@ public class DoctorDashboardManager : MonoBehaviour
                 if (!doc.ContainsField("role")) continue;
                 if (doc.GetValue<string>("role") != "Patient") continue;
 
-                string pName     = doc.ContainsField("username")         ? doc.GetValue<string>("username")         : "Unknown";
-                string pUid      = doc.Id;
-                string assignedTo = doc.ContainsField("assignedDoctorId") ? doc.GetValue<string>("assignedDoctorId") : "";
+                string pName      = doc.ContainsField("username")          ? doc.GetValue<string>("username")          : "Unknown";
+                string pUid       = doc.Id;
+                string assignedTo = doc.ContainsField("assignedDoctorId")  ? doc.GetValue<string>("assignedDoctorId")  : "";
+                string requested  = doc.ContainsField("requestedDoctorId") ? doc.GetValue<string>("requestedDoctorId") : "";
 
-                if (string.IsNullOrEmpty(assignedTo))
+                // Only show in "Search & Add" if the patient explicitly requested this doctor
+                if (string.IsNullOrEmpty(assignedTo) && requested == currentDoctorId)
                     unassignedPatients[pName] = pUid;
                 else if (assignedTo == currentDoctorId)
                     myPatients[pName] = pUid;
