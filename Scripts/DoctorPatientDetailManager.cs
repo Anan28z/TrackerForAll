@@ -32,6 +32,11 @@ public class DoctorPatientDetailManager : MonoBehaviour
     [Header("Graph")]
     public LineGraphRenderer graphRenderer;    // Graph child (RawImage + LineGraphRenderer)
 
+    [Header("Month Filter")]
+    public TMP_Dropdown monthDropdown;  // Dropdown showing all 12 months
+    public Button confirmMonthBtn;      // Confirm button
+    public TextMeshProUGUI monthStatusText; // Optional — shows "No data" feedback
+
     [Header("Time Range Buttons")]
     public Button btn7Days;    // Btn_7Days  → OnClick: On7Days()
     public Button btn30Days;   // Btn_30Days → OnClick: On30Days()
@@ -75,6 +80,12 @@ public class DoctorPatientDetailManager : MonoBehaviour
     private enum TimeRange { Week, Month, Year }
     private TimeRange currentRange = TimeRange.Week;
 
+    // Set to the last moment of the confirmed month — all time ranges use this as "now"
+    private System.DateTime selectedAnchorDate = System.DateTime.UtcNow;
+    // Months (1-12) that have at least one session, for the most recent data year
+    private HashSet<int> monthsWithData = new HashSet<int>();
+    private int selectedYear;
+
     private readonly Color colorActive   = new Color(0.20f, 0.55f, 1.00f, 1.00f);
     private readonly Color colorInactive = new Color(1.00f, 1.00f, 1.00f, 0.15f);
 
@@ -91,6 +102,8 @@ public class DoctorPatientDetailManager : MonoBehaviour
         if (exerciseTitleText != null) exerciseTitleText.text = exercise;
 
         ResetAllUI();
+        SetTimeButtonsInteractable(false);
+        if (monthStatusText != null) monthStatusText.text = "";
         FetchSessions();
     }
 
@@ -114,6 +127,36 @@ public class DoctorPatientDetailManager : MonoBehaviour
     {
         currentRange = TimeRange.Year;
         HighlightBtn(btn1Year);
+        RefreshGraphAndWindowStats();
+    }
+
+    // ===================== MONTH CONFIRM =====================
+
+    public void OnConfirmMonth()
+    {
+        if (monthDropdown == null) return;
+
+        int selectedMonth = monthDropdown.value + 1; // dropdown is 0-indexed, months are 1-12
+
+        if (!monthsWithData.Contains(selectedMonth))
+        {
+            if (monthStatusText != null) monthStatusText.text = "No data for this month.";
+            SetTimeButtonsInteractable(false);
+            return;
+        }
+
+        if (monthStatusText != null) monthStatusText.text = "";
+
+        // Anchor = last moment of the selected month so 7/30/1Y look back from month-end
+        int daysInMonth = System.DateTime.DaysInMonth(selectedYear, selectedMonth);
+        selectedAnchorDate = new System.DateTime(selectedYear, selectedMonth, daysInMonth,
+                                                  23, 59, 59, System.DateTimeKind.Utc);
+
+        SetTimeButtonsInteractable(true);
+
+        // Default to 7-day view for the confirmed month
+        currentRange = TimeRange.Week;
+        HighlightBtn(btn7Days);
         RefreshGraphAndWindowStats();
     }
 
@@ -178,10 +221,8 @@ public class DoctorPatientDetailManager : MonoBehaviour
                 // All-time block is calculated once and never touched again
                 CalculateAllTimeTotals();
 
-                // Default to 7-day view
-                currentRange = TimeRange.Week;
-                HighlightBtn(btn7Days);
-                RefreshGraphAndWindowStats();
+                // Populate the month picker — time buttons stay locked until Confirm is clicked
+                PopulateMonthDropdown();
             });
     }
 
@@ -189,19 +230,19 @@ public class DoctorPatientDetailManager : MonoBehaviour
 
     private void RefreshGraphAndWindowStats()
     {
-        System.DateTime now = System.DateTime.UtcNow;
+        System.DateTime anchor = selectedAnchorDate;
         float rangeDays;
         System.DateTime cutoff;
 
         switch (currentRange)
         {
-            case TimeRange.Month: cutoff = now.AddDays(-30);  rangeDays = 30f;  break;
-            case TimeRange.Year:  cutoff = now.AddDays(-365); rangeDays = 365f; break;
-            default:              cutoff = now.AddDays(-7);   rangeDays = 7f;   break;
+            case TimeRange.Month: cutoff = anchor.AddDays(-30);  rangeDays = 30f;  break;
+            case TimeRange.Year:  cutoff = anchor.AddDays(-365); rangeDays = 365f; break;
+            default:              cutoff = anchor.AddDays(-7);   rangeDays = 7f;   break;
         }
 
         // Sessions inside this time window only
-        List<SessionRecord> window = allSessions.Where(s => s.date >= cutoff).ToList();
+        List<SessionRecord> window = allSessions.Where(s => s.date >= cutoff && s.date <= anchor).ToList();
 
         // ---- Graph ----
         var seriesList = new List<LineGraphRenderer.Series>();
@@ -348,6 +389,45 @@ public class DoctorPatientDetailManager : MonoBehaviour
             if (allTimeYellowText   != null) allTimeYellowText.text   = totalYellow.ToString();
             if (allTimeRedText      != null) allTimeRedText.text      = totalRed.ToString();
         }
+    }
+
+    // ===================== MONTH DROPDOWN =====================
+
+    private void PopulateMonthDropdown()
+    {
+        if (monthDropdown == null) return;
+
+        // Use the most recent year that has session data
+        selectedYear = allSessions.Count > 0
+            ? allSessions.Max(s => s.date.Year)
+            : System.DateTime.UtcNow.Year;
+
+        monthsWithData.Clear();
+        foreach (var s in allSessions)
+            if (s.date.Year == selectedYear)
+                monthsWithData.Add(s.date.Month);
+
+        string[] monthNames = {
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        };
+
+        monthDropdown.ClearOptions();
+        monthDropdown.AddOptions(new List<string>(monthNames));
+
+        // Pre-select the most recent month that has data
+        int defaultMonth = monthsWithData.Count > 0
+            ? monthsWithData.Max()
+            : System.DateTime.UtcNow.Month;
+
+        monthDropdown.value = defaultMonth - 1; // convert to 0-indexed
+    }
+
+    private void SetTimeButtonsInteractable(bool state)
+    {
+        if (btn7Days  != null) btn7Days.interactable  = state;
+        if (btn30Days != null) btn30Days.interactable = state;
+        if (btn1Year  != null) btn1Year.interactable  = state;
     }
 
     // ===================== UI HELPERS =====================
