@@ -1,9 +1,10 @@
 using UnityEngine;
 using TrackerPro.Unity;
 using System.Collections;
-using UnityEngine.Video; 
-using TMPro;           
+using UnityEngine.Video;
+using TMPro;
 using UnityEngine.UI;
+using Firebase.Auth;
 
 public class AppManager : MonoBehaviour
 {
@@ -202,6 +203,14 @@ public class AppManager : MonoBehaviour
     public void OnQuitClicked()
     {
         Application.Quit();
+    }
+
+    public void Logout()
+    {
+        StopAllExercises();
+        FirebaseAuth.DefaultInstance.SignOut();
+        ShowLogin();
+        Debug.Log("AppManager: User logged out.");
     }
 
     public void OnCurlSelected() { StartTutorialFlow(0, clipCurl); }
