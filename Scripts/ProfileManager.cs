@@ -161,7 +161,7 @@ public class ProfileManager : MonoBehaviour
         if (doctorDropdown == null) return;
 
         FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
-        db.Collection("Users").GetSnapshotAsync().ContinueWithOnMainThread(task =>
+        db.Collection("Users").WhereEqualTo("role", "Doctor").GetSnapshotAsync().ContinueWithOnMainThread(task =>
         {
             if (task.IsFaulted)
             {
@@ -172,9 +172,6 @@ public class ProfileManager : MonoBehaviour
             availableDoctors.Clear();
             foreach (DocumentSnapshot doc in task.Result.Documents)
             {
-                if (!doc.ContainsField("role")) continue;
-                if (doc.GetValue<string>("role") != "Doctor") continue;
-
                 string dName = doc.ContainsField("username") ? doc.GetValue<string>("username") : "Unknown Doctor";
                 availableDoctors[dName] = doc.Id;
             }
