@@ -131,6 +131,12 @@ public class DoctorDashboardManager : MonoBehaviour
 
     // ===================== BTN 1 — ADD PATIENT =====================
 
+    // Called by a Refresh button — re-fetches all patient data from Firestore
+    public void OnRefreshClicked()
+    {
+        FetchAllPatients();
+    }
+
     private void FilterAddDropdown(string searchTerm)
     {
         currentAddNames = FilterList(new List<string>(unassignedPatients.Keys), searchTerm);
