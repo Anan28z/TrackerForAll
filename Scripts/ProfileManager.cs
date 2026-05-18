@@ -230,7 +230,7 @@ public class ProfileManager : MonoBehaviour
 
         FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
         db.Collection("Users").Document(currentUser.UserId)
-            .UpdateAsync("requestedDoctorId", selectedDoctorId)
+            .SetAsync(new Dictionary<string, object> { { "requestedDoctorId", selectedDoctorId } }, SetOptions.MergeAll)
             .ContinueWithOnMainThread(task =>
             {
                 if (task.IsCompleted && !task.IsFaulted)
