@@ -39,3 +39,11 @@
 - **Action:** Changed `UpdateAsync("requestedDoctorId", ...)` to `SetAsync(new Dictionary { requestedDoctorId }, SetOptions.MergeAll)` in `ProfileManager.cs`. `UpdateAsync` fails if the document doesn't exist; `SetAsync` with `MergeAll` creates missing fields without overwriting other existing data
 - **Result:** Patient can now request a doctor even if their Firestore document is missing the field
 - **Next Step:** —
+
+---
+
+## [2026-05-18] - Fix
+- **Goal:** Fix doctor dashboard showing "No patients found" even after a patient successfully requested them
+- **Action:** Added `OnRefreshClicked()` public method to `DoctorDashboardManagerv.cs` that calls `FetchAllPatients()`. The dashboard only loads data once on `OnEnable`, so if a patient requests while the doctor panel is already open, the doctor sees stale data until they manually refresh
+- **Result:** Doctor can tap Refresh to re-fetch Firestore and see newly requested patients
+- **Next Step:** Add a Refresh button to the Doctor Dashboard panel in Unity and wire OnClick → DoctorDashboardManager → OnRefreshClicked()
